@@ -1,4 +1,9 @@
+import sys
 from stats import get_word_count, get_char_count, dic_to_list
+
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -9,12 +14,12 @@ def sort_on(items):
     return items["num"]
 
 def Main():
-    book_text = get_book_text("books/frankenstein.txt")
+    book_text = get_book_text(sys.argv[1])
     char_dic = get_char_count(book_text)
     char_count = dic_to_list(char_dic)
     char_count.sort(key=sort_on, reverse=True)
     print("============ BOOKBOT ============")
-    print("Analyzing book found at books/frankenstein.txt...")
+    print(f"Analyzing book found at {sys.argv[1]}")
     print("----------- Word Count ----------")
     print(get_word_count(book_text))
     print("--------- Character Count -------")
