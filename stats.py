@@ -13,3 +13,11 @@ def get_char_count(book_text):
         else:
             letter_instances[char] += 1
     return letter_instances
+
+def dic_to_list(char_count):
+    char_numb = {}
+    list_char_counts = []
+    for char in char_count:
+        char_numb = {"char":char, "num":char_count[char]}
+        list_char_counts.append(char_numb)
+    return list_char_counts
